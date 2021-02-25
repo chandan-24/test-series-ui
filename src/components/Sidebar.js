@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 class Sidebar extends Component {
   render() {
     return (
-      <div className="top-16 fixed avail-height w-72 bg-white border-r-2 border-gray-200 ">
+      <div className="top-16 fixed avail-height w-1/5 bg-white border-r-2 border-gray-200 ">
         <div className="text-gray-500">
           <div className="mt-10">
             <div>
-              <a className="mx-6 flex flex-row items-center bg-red-50 h-12 rounded-md hover:shadow-lg hover:text-gray-800" href="#">
+              <a className="mx-6 flex flex-row items-center bg-red-100 h-12 rounded-md hover:shadow-lg hover:text-gray-800" href="#">
               <svg className="w-7 h-7 mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
                 <span>Dashboard</span>
               </a>
@@ -35,7 +35,7 @@ class Sidebar extends Component {
           <div className="absolute bottom-0 left-0 w-full border-t-2">
             <div className="flex flex-row items-center mx-6 my-3">
               <div className="max-w-xs rounded-full text-sm">
-                <img class="h-12 w-12 rounded-full" src="https://avatars.githubusercontent.com/u/27084297?size=200" alt="avatar" />
+                <img className="h-12 w-12 rounded-full" src="https://avatars.githubusercontent.com/u/27084297?size=200" alt="avatar" />
               </div>
 
               <div className="flex flex-col text-sm ml-5">

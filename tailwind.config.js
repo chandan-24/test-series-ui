@@ -2,7 +2,9 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    boxShadow: {
+      lg: '2px 2px 20px #00000028;',
+    },
   },
   variants: {
     extend: {},
