@@ -7,6 +7,7 @@ import Dashboard from "./Dashboard";
 import LiveTest from "./LiveTest";
 import PastTest from "./PastTest";
 import Attempted from "./Attempted";
+import Profile from "./Profile";
 
 class App extends Component {
   render() {
@@ -14,7 +15,7 @@ class App extends Component {
       <Router>
         <Header />
         <Sidebar />
-        <div className="absolute w-4/5 avail-height right-0 top-16">
+        <div className="absolute overflow-y-auto z-0 w-4/5 avail-height right-0 top-16">
           <Switch>
             <Route path="/" exact>
               <Redirect to="/dashboard"/>
@@ -23,6 +24,7 @@ class App extends Component {
             <Route path="/live-test" component={LiveTest} />
             <Route path="/past-test" component={PastTest} />
             <Route path="/attempted" component={Attempted} />
+            <Route path="/profile" component={Profile} />
           </Switch>
         </div>
       </Router>

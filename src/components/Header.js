@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 
-class Header extends Component {
-  render() {
-    this.state = {
-      isUserMenuActive: false,
-    }
+import SubMenu from "./SubMenu";
 
-    this.toggleUserMenuClass = () => {
-      const currentState = this.state.isUserMenuActive;
-      this.setState({ isUserMenuActive: !currentState });
-    }
+class Header extends Component {
+  wrapperRef = React.createRef();
+
+  state = {
+    isUserMenuActive: false,
+  }
+
+  toggleUserMenu = () => {
+    this.setState({ isUserMenuActive: !this.state.isUserMenuActive });
+  }
+
+  render() {
     return (
       <div className="bg-white w-full h-16 border-b-2 border-gray-200 flex items-center fixed">
         <div className="px-8 flex flex-row w-full">
@@ -18,20 +22,15 @@ class Header extends Component {
           </div>
 
           <div className="flex flex-row-reverse items-center w-full">
-
-            <div className="ml-3 relative">
+            <div>
               <div>
-                <button className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-400 focus:ring-white">
-                  <img className="h-12 w-12 rounded-full" src="https://avatars.githubusercontent.com/u/27084297?size=200" alt="avatar" />
+                <button
+                  id="avatar-ctn"
+                  onClick={this.toggleUserMenu}
+                  className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-400 focus:ring-white"
+                >
+                  <img id="avatar" className="h-12 w-12 rounded-full" src="https://avatars.githubusercontent.com/u/27084297?size=200" alt="avatar" />
                 </button>
-              </div>
-
-              <div className="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5">
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your Profile</a>
-
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
-
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
               </div>
             </div>
 
@@ -50,6 +49,8 @@ class Header extends Component {
             </div>
           </div>
         </div>
+        {this.state.isUserMenuActive ?
+          <SubMenu handleToggle={this.toggleUserMenu}/> : null}
       </div>
     );
   }
