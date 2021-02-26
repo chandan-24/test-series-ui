@@ -15,7 +15,7 @@ class Header extends Component {
 
   render() {
     return (
-      <div className="bg-white w-full h-16 border-b-2 border-gray-200 flex items-center fixed">
+      <div className="bg-white z-10 w-full h-16 border-b-2 border-gray-200 flex items-center fixed">
         <div className="px-8 flex flex-row w-full">
           <div className="text-4xl font-bold">
             test.app
