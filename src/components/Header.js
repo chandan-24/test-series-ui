@@ -1,23 +1,30 @@
 import React, { Component } from 'react';
 
 import SubMenu from "./SubMenu";
+import  DarkModeOff from '../assets/icons/dark-off.svg'
+import  DarkModeOn from '../assets/icons/dark-on.svg'
 
 class Header extends Component {
   wrapperRef = React.createRef();
 
   state = {
     isUserMenuActive: false,
+    isDarkModeOn: false,
   }
 
   toggleUserMenu = () => {
     this.setState({ isUserMenuActive: !this.state.isUserMenuActive });
   }
 
+  toggleDarkMode = () => {
+    this.setState({ isDarkModeOn: !this.state.isDarkModeOn });
+  }
+
   render() {
     return (
-      <div className="bg-white z-10 w-full h-16 border-b-2 border-gray-200 flex items-center fixed">
-        <div className="px-8 flex flex-row w-full">
-          <div className="text-4xl font-bold">
+      <div className={(this.state.isDarkModeOn ? "dark " : "") + " bg-white z-10 w-full h-16 border-b-2 border-gray-200 flex items-center fixed"}>
+        <div className="px-8 flex flex-row w-full dark:bg-gray-800">
+          <div className="text-4xl font-bold dark:text-white">
             test.app
           </div>
 
@@ -34,14 +41,10 @@ class Header extends Component {
               </div>
             </div>
 
-            <div className="mx-6 text-gray-500 relative cursor-pointer hover:text-gray-800">
-              <div>
-                <svg
-                  className="w-9 h-9 " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" 
-                /></svg>
+            <div className="mx-6 cursor-pointer">
+              <div onClick={this.toggleDarkMode} className="flex items-center w-11 h-11 rounded-full bg-gray-600 hover:bg-gray-800 dark:bg-white">
+                <img className="mx-2 w-8 h-8" src={this.state.isDarkModeOn ? DarkModeOn : DarkModeOff} />
               </div>
-
-              <div className="bg-gradient-to-r from-blue-300 to-indigo-800 h-3 w-3 rounded-full absolute top-1 right-1.5"></div>
             </div>
 
             <div className="text-2xl bg-green-400 text-white px-4 py-1.5 rounded-md hover:bg-green-500 cursor-pointer delay-150">

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 class SubMenu extends Component {
   handleToggle = () => {
-    console.log('calling callback!');
     this.props.handleToggle();
   }
 

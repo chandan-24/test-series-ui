@@ -12,19 +12,15 @@ class Sidebar extends Component {
   componentDidMount = () => {
     switch (window.location.pathname) {
       case '/dashboard' :
-        console.log(this.state);
         this.setState({isDashboardActive: true});
         break;
       case '/live-test' :
-        console.log(this.state);
         this.setState({isLiveTestActive: true});
         break;
       case '/past-test' :
-        console.log(this.state);
         this.setState({isPastTestActive: true});
         break;
       case '/attempted' :
-        console.log(this.state);
         this.setState({isAttemptedActive: true});
         break;
     }
