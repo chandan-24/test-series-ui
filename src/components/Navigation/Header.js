@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 
 import SubMenu from "./SubMenu";
-import  DarkModeOff from '../assets/icons/dark-off.svg'
-import  DarkModeOn from '../assets/icons/dark-on.svg'
+import DarkModeOff from '../../assets/icons/dark-off.svg';
+import DarkModeOn from '../../assets/icons/dark-on.svg';
+
+import { toggleDarkMode } from '../../globalStore/actions/darkMode';
 
 class Header extends Component {
   wrapperRef = React.createRef();
@@ -17,13 +21,14 @@ class Header extends Component {
   }
 
   toggleDarkMode = () => {
+    this.props.toggleDarkMode(!this.state.isDarkModeOn);
     this.setState({ isDarkModeOn: !this.state.isDarkModeOn });
   }
 
   render() {
     return (
-      <div className={(this.state.isDarkModeOn ? "dark " : "") + " bg-white z-10 w-full h-16 border-b-2 border-gray-200 flex items-center fixed"}>
-        <div className="px-8 flex flex-row w-full dark:bg-gray-800">
+      <div className="bg-white z-10 w-full h-16 border-b-2 border-gray-200 flex items-center fixed  dark:bg-gray-800">
+        <div className="px-8 flex flex-row w-full">
           <div className="text-4xl font-bold dark:text-white">
             test.app
           </div>
@@ -43,7 +48,7 @@ class Header extends Component {
 
             <div className="mx-6 cursor-pointer">
               <div onClick={this.toggleDarkMode} className="flex items-center w-11 h-11 rounded-full bg-gray-600 hover:bg-gray-800 dark:bg-white">
-                <img className="mx-2 w-8 h-8" src={this.state.isDarkModeOn ? DarkModeOn : DarkModeOff} />
+                <img className="mx-2 w-8 h-8 dark:text-yellow-400" src={this.state.isDarkModeOn ? DarkModeOn : DarkModeOff} />
               </div>
             </div>
 
@@ -59,4 +64,6 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapDispatchToProps = { toggleDarkMode, }
+
+export default connect(null, mapDispatchToProps)(Header);
