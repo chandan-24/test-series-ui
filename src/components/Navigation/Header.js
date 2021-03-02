@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import produce from 'immer';
 
 
 import SubMenu from "./SubMenu";
@@ -14,6 +15,14 @@ class Header extends Component {
   state = {
     isUserMenuActive: false,
     isDarkModeOn: false,
+  }
+
+  componentDidMount = () => {
+    this.setState(
+      produce((draftState) => {
+        draftState.isDarkModeOn = this.props.isDarkModeOn;
+      })
+    )
   }
 
   toggleUserMenu = () => {
@@ -64,6 +73,12 @@ class Header extends Component {
   }
 }
 
-const mapDispatchToProps = { toggleDarkMode, }
+const mapDispatchToProps = { toggleDarkMode }
 
-export default connect(null, mapDispatchToProps)(Header);
+const mapStateToProps = state => {
+  return {
+    isDarkModeOn: state.uiState.isDarkModeOn
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

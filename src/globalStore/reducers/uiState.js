@@ -1,12 +1,17 @@
-export default function(state = {}, action) {
+import produce from "immer";
+
+const INTIAL_STATE = {
+  isDarkModeOn: false
+}
+
+export default produce((draftState, action) => {
   switch (action.type) {
     case 'TOGGLE_DARK_MODE': {
-      return {
-        ...state,
-        isDarkModeOn: action.payload.isDarkModeOn,
-      };
+      draftState.isDarkModeOn = action.payload.isDarkModeOn;
+      return;
     }
+    
     default:
-      return state;
+      return;
   }
-}
+}, INTIAL_STATE);
