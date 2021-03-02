@@ -1,13 +1,21 @@
-import produce from "immer";
+import produce from 'immer';
+
+import { UI_ACTION_TYPE } from '../../constants';
 
 const INTIAL_STATE = {
-  isDarkModeOn: false
+  isDarkModeOn: false,
+  activePath: '/dashboard',
 }
 
 export default produce((draftState, action) => {
   switch (action.type) {
-    case 'TOGGLE_DARK_MODE': {
+    case UI_ACTION_TYPE.TOGGLE_DARK_MODE: {
       draftState.isDarkModeOn = action.payload.isDarkModeOn;
+      return;
+    }
+
+    case UI_ACTION_TYPE.SET_ACTIVE_PATH: {
+      draftState.activePath = action.payload.path;
       return;
     }
     

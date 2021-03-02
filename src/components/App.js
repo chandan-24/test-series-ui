@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import{ Switch, Route, Redirect, withRouter } from "react-router-dom";
 
+
+import { setActivePath } from '../globalStore/actions/handleUiState';
+
+
 import Header from './Navigation/Header';
 import Sidebar from './Navigation/Sidebar';
 import Dashboard from "./Dashboard";
@@ -10,10 +14,8 @@ import PastTest from "./PastTest";
 import Attempted from "./Attempted";
 import Profile from "./Profile";
 
+
 class App extends Component {
-  componentDidMount = () =>{
-    console.log("App prop", this.props)
-  }
   render() {
     return (
       <div className={this.props.isDarkModeOn ? 'dark' : null}>
@@ -36,10 +38,12 @@ class App extends Component {
   }
 }
 
+const mapDispatchToProps = { setActivePath }
+
 const mapStateToProps = state => {
   return {
     isDarkModeOn: state.uiState.isDarkModeOn
   }
 }
 
-export default connect(mapStateToProps, null)(withRouter(App));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));

@@ -7,7 +7,7 @@ import SubMenu from "./SubMenu";
 import DarkModeOff from '../../assets/icons/dark-off.svg';
 import DarkModeOn from '../../assets/icons/dark-on.svg';
 
-import { toggleDarkMode } from '../../globalStore/actions/darkMode';
+import { toggleDarkMode } from '../../globalStore/actions/handleUiState';
 
 class Header extends Component {
   wrapperRef = React.createRef();
