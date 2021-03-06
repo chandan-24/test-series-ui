@@ -4,7 +4,9 @@ import { Link, Redirect } from 'react-router-dom';
 
 import { setActivePath } from '../globalStore/actions/handleUiState';
 import { userLogIn } from '../globalStore/actions/handleAuth';
+import { loadOverTest } from '../globalStore/actions/loadData';
 import { PATHS } from '../constants';
+import testData from '../assets/testData.json'
 
 import Spinner from './Spinner';
 
@@ -18,12 +20,15 @@ class Login extends Component {
     this.setState({isLoading: true})
 
     setTimeout(() => {
-      const userInfo= {
+      const userInfo = {
         avatar: 'https://avatars.githubusercontent.com/u/27084297?size=200',
         userName: 'chandan-24',
         name: 'Chandan Kumar',
+        isDarkModeOn: true,
       }
+
       this.props.userLogIn(userInfo);
+      this.props.loadOverTest(testData);
       this.setState({isLoading: false, redirect: true});
       this.props.setActivePath(PATHS.DASHBOARD);
     }, 2000);
@@ -118,6 +123,6 @@ class Login extends Component {
   }
 }
 
-const mapDispatchToProps = { userLogIn, setActivePath, };
+const mapDispatchToProps = { userLogIn, setActivePath, loadOverTest, };
 
 export default connect(null, mapDispatchToProps)(Login);
