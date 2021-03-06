@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect, withRouter } from 'react-router-dom';
 import produce from 'immer';
 
 
@@ -7,7 +8,8 @@ import SubMenu from "./SubMenu";
 import DarkModeOff from '../../assets/icons/dark-off.svg';
 import DarkModeOn from '../../assets/icons/dark-on.svg';
 
-import { toggleDarkMode } from '../../globalStore/actions/handleUiState';
+import { toggleDarkMode, setActivePath } from '../../globalStore/actions/handleUiState';
+import { PATHS } from '../../constants';
 
 class Header extends Component {
   wrapperRef = React.createRef();
@@ -15,6 +17,7 @@ class Header extends Component {
   state = {
     isUserMenuActive: false,
     isDarkModeOn: false,
+    redirect: false,
   }
 
   componentDidMount = () => {
@@ -34,11 +37,23 @@ class Header extends Component {
     this.setState({ isDarkModeOn: !this.state.isDarkModeOn });
   }
 
+  redirectHome = () => {
+    if (this.props.location.pathname != PATHS.DASHBOARD) {
+      this.setState({redirect: true});
+      this.props.setActivePath(PATHS.DASHBOARD);
+    }
+  }
+
   render() {
+    if (this.state.redirect) {
+      this.setState({redirect: false});
+      return <Redirect to='/dashboard'/>;
+    }
+
     return (
       <div className="bg-white z-10 w-full h-16 border-b-2 border-gray-200 flex items-center fixed  dark:bg-gray-800">
         <div className="px-8 flex flex-row w-full">
-          <div className="text-4xl font-bold dark:text-white">
+          <div onClick={this.redirectHome} className="text-4xl font-bold dark:text-white cursor-pointer">
             test.app
           </div>
 
@@ -73,7 +88,7 @@ class Header extends Component {
   }
 }
 
-const mapDispatchToProps = { toggleDarkMode }
+const mapDispatchToProps = { toggleDarkMode, setActivePath }
 
 const mapStateToProps = state => {
   return {
@@ -81,4 +96,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));

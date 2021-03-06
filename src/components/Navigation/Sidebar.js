@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import produce from 'immer';
 
 import { PATHS } from '../../constants';
 import { setActivePath } from '../../globalStore/actions/handleUiState';

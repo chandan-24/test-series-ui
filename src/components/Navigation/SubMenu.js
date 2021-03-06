@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { setActivePath } from '../../globalStore/actions/handleUiState';
+import { userLogOut } from '../../globalStore/actions/handleAuth';
 import { PATHS } from '../../constants';
 
 class SubMenu extends Component {
@@ -13,7 +14,8 @@ class SubMenu extends Component {
 
   handleClickOnSignOut = () => {
     this.props.handleToggle();
-    this.props.setActivePath(PATHS.DASHBOARD);
+    this.props.userLogOut();
+    this.props.setActivePath(PATHS.LOG_IN);
   }
 
   render() {
@@ -24,13 +26,13 @@ class SubMenu extends Component {
 
           {/* <Link to="/profile" onClick={this.handleClick} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer z-auto">Settings</Link> */}
 
-          <Link to="/" onClick={this.handleClickOnSignOut} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer z-auto">Sign out</Link>
+          <Link to="/login" onClick={this.handleClickOnSignOut} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer z-auto">Sign out</Link>
         </div>
       </div>
     );
   }
 }
 
-const mapDispatchToProps = { setActivePath }
+const mapDispatchToProps = { setActivePath, userLogOut }
 
 export default connect(null, mapDispatchToProps)(SubMenu);
