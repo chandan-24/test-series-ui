@@ -4,7 +4,7 @@ import { UI_ACTION_TYPE } from '../../constants';
 
 const INTIAL_STATE = {
   isDarkModeOn: false,
-  activePath: '/dashboard',
+  activePath: '/login',
 }
 
 export default produce((draftState, action) => {
