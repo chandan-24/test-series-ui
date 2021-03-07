@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import produce from 'immer';
 
 
@@ -17,7 +17,6 @@ class Header extends Component {
   state = {
     isUserMenuActive: false,
     isDarkModeOn: false,
-    redirect: false,
   }
 
   componentDidMount = () => {
@@ -29,7 +28,11 @@ class Header extends Component {
   }
 
   toggleUserMenu = () => {
-    this.setState({ isUserMenuActive: !this.state.isUserMenuActive });
+    this.setState(
+      produce((draftState) => {
+        draftState.isUserMenuActive = !this.state.isUserMenuActive;
+      })
+    )
   }
 
   toggleDarkMode = () => {
@@ -39,17 +42,19 @@ class Header extends Component {
 
   redirectHome = () => {
     if (this.props.location.pathname != PATHS.DASHBOARD) {
-      this.setState({redirect: true});
       this.props.setActivePath(PATHS.DASHBOARD);
+      this.props.history.push(PATHS.DASHBOARD)
+    }
+  }
+
+  redirectStartTest = () => {
+    if (this.props.location.pathname != PATHS.START_TEST) {
+      this.props.setActivePath(PATHS.START_TEST);
+      this.props.history.push(PATHS.START_TEST)
     }
   }
 
   render() {
-    if (this.state.redirect) {
-      this.setState({redirect: false});
-      return <Redirect to='/dashboard'/>;
-    }
-
     return (
       <div className="bg-white z-10 w-full h-16 border-b-2 border-gray-200 flex items-center fixed  dark:bg-gray-800">
         <div className="px-8 flex flex-row w-full">
@@ -63,7 +68,7 @@ class Header extends Component {
                 <button
                   id="avatar-ctn"
                   onClick={this.toggleUserMenu}
-                  className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-400 focus:ring-white"
+                  className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-offset-2 focus:ring-offset-green-400 focus:ring-0"
                 >
                   <img id="avatar" className="h-12 w-12 rounded-full" src="https://avatars.githubusercontent.com/u/27084297?size=200" alt="avatar" />
                 </button>
@@ -76,7 +81,7 @@ class Header extends Component {
               </div>
             </div>
 
-            <div className="text-2xl bg-green-400 text-white px-4 py-1.5 rounded-md hover:bg-green-500 cursor-pointer ease-in-out duration-400">
+            <div onClick={this.redirectStartTest} className="text-2xl bg-green-400 text-white px-4 py-1.5 rounded-md hover:bg-green-500 cursor-pointer ease-in-out duration-400">
               Start Test
             </div>
           </div>

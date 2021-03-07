@@ -7,6 +7,7 @@ export const PATHS = {
   ATTEMPTED: '/attempted',
   USER_PROFILE: '/profile',
   NOT_FOUND: '/not-found',
+  START_TEST: '/test',
 }
 
 export const PATHS_WITH_SIDEBAR = [
@@ -14,7 +15,7 @@ export const PATHS_WITH_SIDEBAR = [
 ]
 
 export const PATHS_WITH_HEADER = [
-  '/dashboard', '/live-test', '/past-test', '/attempted', '/profile', '/not-found'
+  '/dashboard', '/live-test', '/past-test', '/attempted', '/profile', '/not-found', '/test'
 ]
 
 

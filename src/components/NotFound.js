@@ -6,7 +6,6 @@ class NotFound extends Component {
     return (
       <div>
       <main
-        aria-labelledby="pageTitle"
         class="flex items-center justify-center h-screen bg-gray-100 dark:bg-dark dark:text-light"
       >
         <div class="p-4 space-y-4">

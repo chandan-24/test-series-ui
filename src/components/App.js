@@ -16,6 +16,8 @@ import Attempted from './Attempted';
 import Profile from './Profile';
 import NotFound from './NotFound';
 import Login from './Login';
+import EnterTest from './EnterTest';
+import RunningTest from './RunningTest';
 
 
 class App extends Component {
@@ -36,6 +38,8 @@ class App extends Component {
         <Switch>
           <Route path="/not-found" component={NotFound} />
           <Route path="/login" component={Login} />
+          <Route path="/test" exact component={EnterTest} />
+          <Route path="/test/:id" component={RunningTest} />
           <div className="absolute overflow-y-auto z-0 w-4/5 avail-height right-0 top-16">
             <Route path="/" exact>
               {

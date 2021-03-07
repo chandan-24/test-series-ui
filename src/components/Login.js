@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import { setActivePath } from '../globalStore/actions/handleUiState';
 import { userLogIn } from '../globalStore/actions/handleAuth';
@@ -13,7 +13,6 @@ import Spinner from './Spinner';
 class Login extends Component {
   state = {
     isLoading: false,
-    redirect: false,
   }
 
   handleLogin = async () => {
@@ -29,15 +28,13 @@ class Login extends Component {
 
       this.props.userLogIn(userInfo);
       this.props.loadOverTest(testData);
-      this.setState({isLoading: false, redirect: true});
+      this.setState({isLoading: false});
       this.props.setActivePath(PATHS.DASHBOARD);
+      this.props.history.push(PATHS.DASHBOARD)
     }, 2000);
   }
 
   render() {
-    if (this.state.redirect) {
-      return <Redirect to='/dashboard'/>;
-    }
     return (
       <div>
         { this.state.isLoading ? <Spinner /> :
@@ -125,4 +122,4 @@ class Login extends Component {
 
 const mapDispatchToProps = { userLogIn, setActivePath, loadOverTest, };
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(withRouter(Login));

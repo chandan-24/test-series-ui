@@ -16,6 +16,10 @@ const INTIAL_STATE = {
     data: []
   },
   testReports: {
+  },
+  runningTest: {
+    isLoading: false,
+    data:{}
   }
 }
 
