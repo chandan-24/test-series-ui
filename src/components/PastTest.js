@@ -29,15 +29,29 @@ class PastTest extends Component {
     }
   }
 
+  calcTestTime(timeInMin) {
+    const hrs = Math.floor(timeInMin / 60);
+    const min = timeInMin % 60;
+    const hrsStr = hrs > 9 ? hrs : '0' + hrs; 
+    const minStr = min > 0 ? min : '0' + min;
+    return `${hrsStr} : ${minStr} hrs`
+  }
+
   render() {
     if (!this.state.isLoaded) {
       return <Spinner />
     }
     return (
-      <div className="justify-center text-gray-800 text-6xl">
+      <div className="mb-12">
         { this.state.pastTestData.map(test => {
-          return <TestItem />
-        })}
+            return <TestItem
+              testName={test.testName}
+              keyName="Test Time"
+              value={this.calcTestTime(test.duration)}
+              op="Clone"
+            />
+          })
+        }
       </div>
     );
   }

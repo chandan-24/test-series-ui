@@ -76,7 +76,7 @@ class Header extends Component {
               </div>
             </div>
 
-            <div className="text-2xl bg-green-400 text-white px-4 py-1.5 rounded-md hover:bg-green-500 cursor-pointer delay-150">
+            <div className="text-2xl bg-green-400 text-white px-4 py-1.5 rounded-md hover:bg-green-500 cursor-pointer ease-in-out duration-400">
               Start Test
             </div>
           </div>

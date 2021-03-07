@@ -34,10 +34,16 @@ class Attempted extends Component {
       return <Spinner />
     }
     return (
-      <div className="justify-center text-gray-800">
+      <div className="mb-12">
         { this.state.attempted.map(test => {
-          return <TestItem />
-        })}
+            return <TestItem
+              testName={test.testName}
+              keyName="Score"
+              value={`${test.score}/${test.totalScore}`}
+              op="Analysis"
+            />
+          }) 
+        }
       </div>
     );
   }

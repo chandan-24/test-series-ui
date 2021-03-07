@@ -12,6 +12,14 @@
   animation: spinner 1.5s linear infinite;
 }
 
+.flex-60 {
+  flex: 60%;
+}
+
+.flex-20 {
+  flex: 20%;
+}
+
 @-webkit-keyframes spinner {
   0% { -webkit-transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); }

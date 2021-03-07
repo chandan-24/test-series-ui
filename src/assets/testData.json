@@ -10,7 +10,7 @@
     },
     {
       "testId": "12132",
-      "testName": "Percentage",
+      "testName": "History",
       "totalScore": "30",
       "score": "25",
       "duration": "20",
@@ -18,7 +18,7 @@
     },
     {
       "testId": "12132",
-      "testName": "Percentage",
+      "testName": "Discount",
       "totalScore": "30",
       "score": "25",
       "duration": "20",
@@ -30,35 +30,35 @@
       "testId": "43523",
       "testName": "Profit/Loss",
       "totalScore": "30",
-      "duration": "20",
+      "duration": "134",
       "time": ""
     },
     {
       "testId": "43523",
-      "testName": "Profit/Loss",
+      "testName": "Polity",
       "totalScore": "30",
-      "duration": "20",
+      "duration": "60",
       "time": ""
     },
     {
       "testId": "43523",
-      "testName": "Profit/Loss",
+      "testName": "CS Lvl-1",
       "totalScore": "30",
-      "duration": "20",
+      "duration": "200",
       "time": ""
     },
     {
       "testId": "43523",
-      "testName": "Profit/Loss",
+      "testName": "Percentage",
       "totalScore": "30",
-      "duration": "20",
+      "duration": "120",
       "time": ""
     },
     {
       "testId": "43523",
-      "testName": "Profit/Loss",
+      "testName": "Simple Interest",
       "totalScore": "30",
-      "duration": "20",
+      "duration": "90",
       "time": ""
     }
   ]
